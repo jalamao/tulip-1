@@ -25,7 +25,7 @@
 
 #include <climits>
 #include <tulip/tulipconf.h>
-#include <tulip/Reflect.h>
+
 #include <tulip/PluginContext.h>
 #include <tulip/Node.h>
 #include <tulip/Edge.h>

@@ -47,7 +47,6 @@ PreferenceManager.cpp
 PropertyInterface.cpp
 PropertyManager.cpp
 PropertyTypes.cpp
-Reflect.cpp
 SimplePluginProgress.cpp
 SimpleTest.cpp
 SizeProperty.cpp
