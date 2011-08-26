@@ -1,0 +1,82 @@
+SET(SRCS
+  src/AboutTulipPage.cpp
+  src/main.cpp
+  src/PerspectiveItemWidget.cpp
+  src/PluginErrorReport.cpp
+  src/PluginLoaderDispatcher.cpp
+  src/PluginLoaderReporter.cpp
+  src/PluginsCenter.cpp
+  src/PluginInformationsListItem.cpp
+  src/RssParser.cpp
+  src/TulipAgentServiceAdaptor.cpp
+  src/TulipMainWindow.cpp
+  src/TulipSplashScreen.cpp
+  src/TulipWelcomePage.cpp
+  src/PluginResultsList.cpp
+  src/DetailedPluginInformationsWidget.cpp
+  src/TulipPerspectiveProcessHandler.cpp
+  src/TulipPerspectiveCrashHandler.cpp
+  src/FormPost.cpp
+)
+
+QT4_WRAP_UI(UI_HEADERS
+  designer/AboutTulipPage.ui
+  designer/PerspectiveItem.ui
+  designer/PluginErrorReport.ui
+  designer/PluginsCenter.ui
+  designer/TulipMainWindow.ui
+  designer/TulipWelcomePage.ui
+  designer/PluginInformationsListItem.ui
+  designer/DetailedPluginInformationsWidget.ui
+  designer/TulipPerspectiveCrashHandler.ui
+  designer/PerspectiveSelectionDialog.ui
+)
+
+QT4_WRAP_CPP(MOC_SRCS
+  include/PerspectiveItemWidget.h
+  include/PluginErrorReport.h
+  include/PluginsCenter.h
+  include/TulipAgentServiceAdaptor.h
+  include/TulipMainWindow.h
+  include/TulipWelcomePage.h
+  include/PluginInformationsListItem.h
+  include/PluginResultsList.h
+  include/DetailedPluginInformationsWidget.h
+  include/TulipPerspectiveProcessHandler.h
+  include/TulipPerspectiveCrashHandler.h
+  include/FormPost.h
+)
+
+QT4_ADD_RESOURCES(RCC_SRCS resources/TulipAgent.qrc)
+
+IF(USE_CRASH_HANDLING)
+  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../crash_handling)	
+  ADD_DEFINITIONS(-DUSE_CRASH_HANDLING)
+ENDIF(USE_CRASH_HANDLING)
+
+INCLUDE_DIRECTORIES(include ${CMAKE_CURRENT_BINARY_DIR} ${TulipCoreBuildInclude} ${TulipCoreInclude} ${TulipOGLInclude} ${TulipGUIInclude} ${QT_INCLUDE_DIR})
+IF(WIN32)
+INCLUDE_DIRECTORIES(BEFORE ${QT_QTDBUS_INCLUDE_DIR})
+ADD_DEFINITIONS(-DQT_DBUS -DQT_NO_DBUS)
+ENDIF()
+
+ADD_EXECUTABLE(tulip ${SRCS} ${UI_HEADERS} ${MOC_SRCS} ${RCC_SRCS})
+
+IF(LINUX)
+  SET_TARGET_PROPERTIES(tulip PROPERTIES INSTALL_RPATH "$ORIGIN/../lib")
+ELSEIF(APPLE)
+  SET_TARGET_PROPERTIES(tulip PROPERTIES INSTALL_RPATH "$ORIGIN/../Frameworks")
+ELSE()
+  SET_TARGET_PROPERTIES(tulip PROPERTIES INSTALL_RPATH "$ORIGIN")
+ENDIF()
+
+TARGET_LINK_LIBRARIES(tulip ${LibTulipCoreName} ${LibTulipOGLName} ${LibTulipGUIName} ${QT_LIBRARIES} ${QT_QTDBUS_LIBRARY})
+
+IF(TULIP_USE_TULIP3)
+  TARGET_LINK_LIBRARIES(tulip ${LibTulip3CompatName})
+ENDIF()
+
+INSTALL(TARGETS tulip
+  RUNTIME DESTINATION ${TulipBinInstallDir} COMPONENT tulip_app
+  LIBRARY DESTINATION ${TulipLibInstallDir} COMPONENT tulip_app
+  ARCHIVE DESTINATION ${TulipLibInstallDir} COMPONENT tulip_app)

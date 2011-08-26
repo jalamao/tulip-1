@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlgorithmRunnerData</class>
+ <widget class="QWidget" name="AlgorithmRunnerData">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>386</width>
+    <height>712</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="HeaderFrame" name="header" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="searchBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#searchBox {
+  background-color: white;
+  border-left: 1px solid &quot;#C9C9C9&quot;;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 1px solid &quot;#C9C9C9&quot;;
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Filter name...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="algorithmList">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#algorithmListContents {
+  background-color: white;
+  border-top: 0px;
+  border-left: 1px solid &quot;#C9C9C9&quot;;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+ExpandableGroupBox {
+  background-color: &quot;#FDFDFD&quot;;
+  border: 1px solid &quot;#E9E9E9&quot;;
+  margin-top: 1.5ex;
+  font: bold;
+}
+
+ExpandableGroupBox::title {
+  subcontrol-origin: margin;
+  subcontrol-position: top left;
+  padding: 0 3px;
+}
+
+ExpandableGroupBox::indicator:unchecked {
+  image: url(:/tulip/graphperspective/ui/right_arrow-black.png);
+}
+
+ExpandableGroupBox::indicator:checked {
+  image: url(:/tulip/graphperspective/ui/down_arrow-black.png);
+}
+
+QToolButton, QComboBox {
+    border-image: url(:/tulip/gui/ui/btn_26.png) 4;
+    border-width: 4;
+    padding: 0px 6px;
+    font-size: 12px;
+}
+
+QPushButton {
+  border-image: none;
+  background-color: white;
+  border: 1px solid &quot;#E9E9E9&quot;;
+  color: black;
+  outline: none;
+  margin: 2
+}
+
+QPushButton:hover {
+  border-image: none;
+  background-color: white;
+  border: 1px solid &quot;#C9C9C9&quot;;
+}
+
+QPushButton:disabled {
+	color:gray;
+}
+
+QPushButton:pressed{
+  border-image: none;
+  background-color: &quot;#E9E9E9&quot;;
+  border: 1px solid &quot;#C9C9C9&quot;;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="algorithmListContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>386</width>
+        <height>680</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HeaderFrame</class>
+   <extends>QWidget</extends>
+   <header>HeaderFrame.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

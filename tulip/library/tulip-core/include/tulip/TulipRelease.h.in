@@ -1,0 +1,5 @@
+#ifndef TULIP_RELEASE
+#define TULIP_RELEASE "@TulipVersion@"
+#define TULIP_MM_RELEASE "@TulipMMVersion@"
+#define TULIP_INT_RELEASE @TulipIntVersion@
+#endif

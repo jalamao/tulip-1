@@ -1,0 +1,46 @@
+SET(SRCS
+  src/main.cpp
+  src/TulipAgentCommunicator.cpp
+)
+
+QT4_WRAP_CPP(MOC_SRCS
+  include/TulipAgentCommunicator.h
+)
+
+IF(USE_CRASH_HANDLING)
+  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../crash_handling)
+  ADD_DEFINITIONS(-DUSE_CRASH_HANDLING)
+ENDIF(USE_CRASH_HANDLING)
+
+IF(WIN32)
+INCLUDE_DIRECTORIES(BEFORE ${QT_QTDBUS_INCLUDE_DIR})
+ADD_DEFINITIONS(-DQT_DBUS -DQT_NO_DBUS)
+ENDIF()
+
+INCLUDE_DIRECTORIES(${QT_INCLUDE_DIR} ${TulipCoreInclude} ${TulipCoreBuildInclude} ${TulipOGLInclude} ${TulipGUIInclude} include/)
+
+ADD_EXECUTABLE(tulip_perspective ${SRCS} ${MOC_SRCS})
+
+IF(LINUX)
+  SET_TARGET_PROPERTIES(tulip_perspective PROPERTIES INSTALL_RPATH "$ORIGIN/../lib")
+ELSEIF(APPLE)
+  SET_TARGET_PROPERTIES(tulip_perspective PROPERTIES INSTALL_RPATH "$ORIGIN/../Frameworks")
+ELSE()
+  SET_TARGET_PROPERTIES(tulip_perspective PROPERTIES INSTALL_RPATH "$ORIGIN")
+ENDIF()
+
+TARGET_LINK_LIBRARIES(tulip_perspective ${LibTulipCoreName} ${LibTulipOGLName} ${LibTulipGUIName} ${QT_LIBRARIES} ${QT_QTDBUS_LIBRARY})
+
+IF(TULIP_USE_TULIP3)
+  TARGET_LINK_LIBRARIES(tulip_perspective ${LibTulip3CompatName})
+ENDIF()
+
+IF(USE_CRASH_HANDLING)
+  TARGET_LINK_LIBRARIES(tulip_perspective crash_handling)
+ENDIF(USE_CRASH_HANDLING)
+
+
+INSTALL(TARGETS tulip_perspective
+  RUNTIME DESTINATION ${TulipBinInstallDir} COMPONENT tulip_app
+  LIBRARY DESTINATION ${TulipLibInstallDir} COMPONENT tulip_app
+  ARCHIVE DESTINATION ${TulipLibInstallDir} COMPONENT tulip_app)
