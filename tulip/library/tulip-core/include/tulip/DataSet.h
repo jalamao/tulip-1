@@ -16,35 +16,9 @@
  * See the GNU General Public License for more details.
  *
  */
-#ifndef DATASETTEST
-#define DATASETTEST
+#ifndef _TULIPDATASET
+#define _TULIPDATASET
 
-#include <string>
-#include <tulip/Graph.h>
 #include <tulip/Reflect.h>
-#include <cppunit/TestFixture.h>
-#include <cppunit/TestSuite.h>
-#include <cppunit/extensions/HelperMacros.h>
 
-namespace tlp {
-
-class DataSetTest : public CppUnit::TestFixture {
-  CPPUNIT_TEST_SUITE(DataSetTest);
-  CPPUNIT_TEST(testSetGetBool);
-  CPPUNIT_TEST(testSetGetDouble);
-  CPPUNIT_TEST(testSetGetInt);
-  CPPUNIT_TEST(testSetGetString);
-  CPPUNIT_TEST(testSetGetStruct);
-  CPPUNIT_TEST_SUITE_END();
-public:
-  void setUp() {}
-  void tearDown() {}
-  void testSetGetBool();
-  void testSetGetDouble();
-  void testSetGetInt();
-  void testSetGetString();
-  void testSetGetStruct();
-};
-
-}
 #endif

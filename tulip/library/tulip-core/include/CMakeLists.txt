@@ -51,6 +51,7 @@ INSTALL(FILES
   tulip/BooleanProperty.h
   tulip/TulipPlugin.h
   tulip/ExportModule.h
+  tulip/Reflect.h
   tulip/DataSet.h
   tulip/WithParameter.h
   tulip/WithDependency.h

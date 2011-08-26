@@ -17,7 +17,7 @@
  *
  */
 #include "tulip/TlpQtTools.h"
-#include "tulip/"
+#include "tulip/Reflect.h"
 #include "tulip/Color.h"
 #include "tulip/DoubleProperty.h"
 #include "tulip/StringProperty.h"
