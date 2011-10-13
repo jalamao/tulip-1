@@ -48,8 +48,8 @@ MouseEdgeBendEditor::~MouseEdgeBendEditor() {
 //========================================================================================
 bool MouseEdgeBendEditor::eventFilter(QObject *widget, QEvent *e) {
 
-    QMouseEvent * qMouseEv = static_cast<QMouseEvent *>(e);
-    glMainWidget = static_cast<GlMainWidget *>(widget);
+  QMouseEvent * qMouseEv = static_cast<QMouseEvent *>(e);
+  glMainWidget = static_cast<GlMainWidget *>(widget);
 
   if(qMouseEv == NULL)
     return false;

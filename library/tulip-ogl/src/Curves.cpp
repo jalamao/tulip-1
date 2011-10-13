@@ -249,7 +249,7 @@ static int computeExtrusion(const Coord &pBefore, const Coord &pCurrent, const C
 
   float newSize=size;
   float angle = 0;
-  
+
   if (bi_xu_xv.norm() != 0) {
     bi_xu_xv /= bi_xu_xv.norm();
   }
