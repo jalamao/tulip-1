@@ -51,10 +51,7 @@ public:
   virtual bool isSubGraph(const Graph* sg) const;
   virtual bool isDescendantGraph(const Graph* sg) const;
   virtual Graph* getSubGraph(unsigned int id) const;
-  virtual Graph* getDescendantGraph(unsigned int id) const;
-  virtual Graph *getNthSubGraph(int n) const;
-  virtual unsigned int numberOfSubGraphs() const;
-  virtual unsigned int numberOfDescendantGraphs() const;
+  virtual Graph* getDescendantGraph(unsigned int id) const;  
   //=======================================
   virtual unsigned int deg(const node) const;
   virtual unsigned int indeg(const node) const;
@@ -124,6 +121,11 @@ private:
   void notifyAddInheritedProperty(const std::string& prop);
   void notifyBeforeDelInheritedProperty(const std::string& prop);
   void notifyAfterDelInheritedProperty(const std::string& prop);
+
+public:
+  virtual Graph *getNthSubGraph(int n) const;
+  virtual unsigned int numberOfSubGraphs() const;
+  virtual unsigned int numberOfDescendantGraphs() const;
 };
 
 }

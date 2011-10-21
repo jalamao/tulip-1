@@ -48,8 +48,6 @@ public:
   virtual bool isDescendantGraph(const Graph* sg) const;
   virtual Graph* getSubGraph(unsigned int id) const;
   virtual Graph* getDescendantGraph(unsigned int id) const;
-  virtual unsigned int numberOfSubGraphs() const;
-  virtual unsigned int numberOfDescendantGraphs() const;
 
   //============================================================
   virtual node source(const edge e)const;
@@ -154,6 +152,10 @@ protected:
   // only called by GraphUpdatesRecorder
   virtual void restoreSubGraph(Graph*, bool);
   virtual void setSubGraphToKeep(Graph*);
+
+public:
+  virtual unsigned int numberOfSubGraphs() const;
+  virtual unsigned int numberOfDescendantGraphs() const;
 };
 
 }
