@@ -191,7 +191,6 @@ protected :
   QAction *undoAction;
   QAction *redoAction;
   QAction *snapshotAction;
-  QAction *printAction;
   QAction *editUndoAction;
   QAction *editRedoAction;
 
@@ -203,6 +202,8 @@ protected :
   QMenu *metricMenu;
   QMenu *selectMenu;
   QMenu *generalMenu;
+  // added at the end to ensure binary compatibility with 3.6.0
+  QAction *printAction;
 
 protected slots:
   /**

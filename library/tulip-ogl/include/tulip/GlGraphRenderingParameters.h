@@ -410,13 +410,14 @@ private:
   int _labelMinSize;
   int _labelMaxSize;
   int _labelsDensity;
-  bool _labelsAreBillboarded;
   std::string _fontsPath;
   std::string _texturePath;
   bool _edgesMaxSizeToNodesSize;
   bool _feedbackRender;
   Color _selectionColor;
   BooleanProperty *_displayFilteringProperty;
+  // added at the end to ensure binary compatibility with 3.6.0
+  bool _labelsAreBillboarded;
   DoubleProperty* _elementOrderingProperty;
 };
 }

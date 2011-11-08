@@ -445,7 +445,6 @@ private :
   int maxSize;
   bool depthTestEnabled;
   bool leftAlign;
-  bool billboarded;
   float xRot;
   float yRot;
   float zRot;
@@ -457,6 +456,8 @@ private :
   std::vector<std::string> textVector;
   std::vector<float> textWidthVector;
   BoundingBox textBoundingBox;
+  // at the end to ensure binary compatibility
+  bool billboarded;
 
   static std::map<std::string, FTGLPolygonFont*> fontMap;
   static std::map<std::string, FTOutlineFont*> borderFontMap;
